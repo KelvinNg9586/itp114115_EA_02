@@ -90,3 +90,37 @@ class Post(db.Model):
 
     def __repr__(self) -> str:
         return f'<Post {self.body}>'
+
+class categories(db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(255))
+        slug = db.Column(db.String(255))
+        parent_id = db.Column(db.Integer, db.ForeignKey('parent.id'))
+
+class product(db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(255))
+        description = db.Column(db.Text)
+        price = db.Column(db.Integer)
+        image_url = db.Column(db.String)
+        category_id = db.Column(db.Integer)
+        brand_id = db.Column(db.Integer)
+        is_available = db.Column(db.Boolean)
+
+class brands(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+
+class orders(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('User'))
+    status = db.Column(db.String(255))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+class order_items(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.Integer, db.ForeignKey('orders'))
+    product_id = db.Column(db.Integer, db.ForeignKey('products'))
+    quantity = db.Column(db.Integer)
+    price = db.Column(db.Integer)
