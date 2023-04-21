@@ -4,31 +4,43 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>ea</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/swiper-icons.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/Footer-Dark-icons.css">
-    <link rel="stylesheet" href="assets/css/Simple-Slider-swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
+    <title>My Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom-styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/swiper-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer-dark-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/simple-slider-swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/simple-slider.css') }}">
 </head>
 
-<body style="background: var(--bs-btn-disabled-color);">
+<body style="background: #f8f9fa;">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-xxl-5"><img src="assets/img/clipboard-image.png" width="30%" height="70%" style="margin-top: 2%;margin-left: 2%;"></div>
-            <div class="col-md-6"><img src="assets/img/icon-youtube.webp"><img src="assets/img/clipboard-image-1.png"><img src="assets/img/icon-facebook.webp"><img src="assets/img/icon-instagram.webp"><img src="assets/img/xhs_30x30.webp"><button class="btn btn-primary" type="button" style="background: var(--bs-btn-disabled-color);margin-top: 4%;"><i class="far fa-user" style="--bs-body-bg: var(--bs-black);color: var(--bs-black);"></i><span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">登入 / 登記</span></button></div>
+            <div class="col-md-6 col-xxl-5"><img src="static/img/download.png"></div>
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='img/icon-youtube.webp') }}">
+                <img src="{{ url_for('static', filename='img/clipboard-image-1.png') }}">
+                <img src="{{ url_for('static', filename='img/icon-facebook.webp') }}">
+                <img src="{{ url_for('static', filename='img/icon-instagram.webp') }}">
+                <img src="{{ url_for('static', filename='img/xhs_30x30.webp') }}">
+                <button class="btn btn-primary" type="button" style="background: var(--bs-btn-disabled-color);margin-top: 4%;">
+                <i class="far fa-user" style="--bs-body-bg: var(--bs-black);color: var(--bs-black);"></i>
+                <span style="color: white background-color: rgb(255, 255, 255);">登入 / 登記</span></button></div>
         </div>
     </div>
     <div class="row">
-        <div class="col"><button class="btn btn-primary" type="button" style="background: var(--bs-black);"><span style="background-color: rgb(0, 0, 0);">產品</span></button><button class="btn btn-primary" type="button" style="background: var(--bs-black);"><span style="background-color: rgb(0, 0, 0);">學生優惠</span></button><button class="btn btn-primary" type="button" style="background: var(--bs-black);"><span style="background-color: rgb(0, 0, 0);">新品速報</span></button><button class="btn btn-primary" type="button" style="background: var(--bs-black);"><span style="background-color: rgb(0, 0, 0);">品牌專區</span></button></div>
+        <div class="col">
+            <button class="btn btn-primary" type="button" style="background: var(--bs-black);"><span style="background-color: white">產品</span></button>
+            <button class="btn btn-primary" type="button" style="background: var(--bs-black);"><span style="background-color: white;">學生優惠</span></button>
+            <button class="btn btn-primary" type="button" style="background: var(--bs-black);"><span style="background-color: white">新品速報</span></button>
+            <button class="btn btn-primary" type="button" style="background: var(--bs-black);"><span style="background-color: white">品牌專區</span></button></div>
     </div>
-    <div class="simple-slider" style="margin-right: 2%;">
+    <div class="image-slider">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"><img src="assets/img/clipboard-image-4.png"></div>
-                <div class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"><img src="assets/img/clipboard-image-5.png"></div>
-                <div class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"><img src="assets/img/clipboard-image-6.png"></div>
+                <div class="swiper-slide" style="background: center center / cover no-repeat;"><img src="{{ url_for('static', filename ='img/clipboard-image-4.png') }}"></div>
+                <div class="swiper-slide" style="background: center center / cover no-repeat;"><img src="{{ url_for('static', filename ='img/clipboard-image-5.png') }}"></div>
+                <div class="swiper-slide" style="background: center center / cover no-repeat;"><img src="{{ url_for('static', filename ='img/clipboard-image-6.png') }}"></div>
             </div>
             <div class="swiper-pagination"></div>
             <div class="swiper-button-prev"></div>
@@ -41,7 +53,7 @@
                 <li class="list-inline-item me-4"></li>
                 <li class="list-inline-item me-4"><a class="link-light" href="#"><br>我們接受以下付款方式<br><br></a></li>
                 <li class="list-inline-item"></li>
-            </ul><img src="assets/img/Broadway_Desktop_Pay-logo.webp">
+            </ul><img src="static/img/Broadway_Desktop_Pay-logo.webp">
             <ul class="list-inline">
                 <li class="list-inline-item me-4"><a href="#"><span style="color: rgb(249, 250, 251);">關注我們</span></a></li>
             </ul>
@@ -58,20 +70,9 @@
             </ul>
         </div>
     </footer>
-    <div class="row">
-        <div class="col">
-            <div class="simple-slider">
-                <div class="swiper-container">
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/Simple-Slider-swiper-bundle.min.js"></script>
-    <script src="assets/js/Simple-Slider.js"></script>
+    <script src="{{ url_for('static', filename='static/img/clipboard-image-1.png') }}"></script>
+    <script src="{{ url_for('static', filename='static/js/Simple-Slider-swiper-bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='static/js/Simple-Slider.js') }}"></script>
 </body>
 
 </html>
