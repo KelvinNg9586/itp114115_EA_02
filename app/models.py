@@ -91,3 +91,12 @@ class Post(db.Model):
     def __repr__(self) -> str:
         return f'<Post {self.body}>'
 
+class shopping_carts(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('User'))
+
+class shopping_carts_items(db.Model):
+     id = db.Column(db.Integer, primary_key=True)
+     shopping_cart_id = db.Column(db.Integer, db.ForeignKey('shopping_cart'))
+     product_id = db.Column(db.Integer, db.ForeignKey('product'))
+     quantity = db.Column(db.Integer)
