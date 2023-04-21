@@ -7,7 +7,7 @@
     {% endif %}
 {% endblock %}
 {% block navbar %}
-    <nav class="navbar navbar-default">
+    <nav class="">
         <div class="container">
             <div class="navbar-header">
                 <button type="button"
@@ -20,7 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url_for('index') }}">Microblog</a>
+                <a class="navbar-brand" href="{{ url_for('index') }}"><img src="static/img/download.png" width="110px" alt="left"></a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
