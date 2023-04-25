@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>MyProduct</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/fontawesome-all.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/Footer-Dark-icons.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <img src="{{ url_for('static', filename='img/clipboard-image.png') }}" width="174" height="96">
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-primary btn-block" type="button" onclick="location.href='{{ url_for('login') }}'">
+          <i class="far fa-user"></i>
+          <span>登入 / 登記</span>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary" type="button"><span>產品</span></button>
+        <button class="btn btn-primary" type="button"><span>學生優惠</span></button>
+        <button class="btn btn-primary" type="button"><span>新品速報</span></button>
+        <button class="btn btn-primary" type="button"><span>品牌專區</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+  <div class="row">
+    {% for product in products %}
+    <div class="col-md-4">
+      <div class="card">
+      {% if product.image_url  %}
+        <img src="{{ url_for('static', filename=product.image_url) }}"
+             class="card-img-top"
+             alt="{{product.title}}">
+      {% else %}
+        <img src="{{ url_for('static', filename='img/no.jpeg') }}"
+             class="card-img-top"
+             alt="{{product.title}}">
+      {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.price }}</p>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text">類別：</p>
+          <p class="card-text">品牌：</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/fontawesome-all.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/Footer-Dark-icons.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</body>
+
+</html>
