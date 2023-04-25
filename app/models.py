@@ -91,13 +91,13 @@ class Post(db.Model):
     def __repr__(self) -> str:
         return f'<Post {self.body}>'
 
-class categories(db.Model):
+class Categories(db.Model):
         id = db.Column(db.Integer, primary_key=True)
         name = db.Column(db.String(255))
         slug = db.Column(db.String(255))
-        parent_id = db.Column(db.Integer, db.ForeignKey('parent.id'))
+        parent_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
 
-class product(db.Model):
+class Product(db.Model):
         id = db.Column(db.Integer, primary_key=True)
         name = db.Column(db.String(255))
         description = db.Column(db.Text)
@@ -107,30 +107,30 @@ class product(db.Model):
         brand_id = db.Column(db.Integer)
         is_available = db.Column(db.Boolean)
 
-class brands(db.Model):
+class Brands(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
 
-class orders(db.Model):
+class Orders(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('User'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     status = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-class order_items(db.Model):
+class Order_items(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    order_id = db.Column(db.Integer, db.ForeignKey('orders'))
-    product_id = db.Column(db.Integer, db.ForeignKey('products'))
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
     quantity = db.Column(db.Integer)
     price = db.Column(db.Integer)
 
-class shopping_carts(db.Model):
+class Shopping_carts(db.Model):
      id = db.Column(db.Integer, primary_key=True)
-     user_id = db.Column(db.Integer, db.ForeignKey('User'))
+     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-class shopping_carts_items(db.Model):
+class Shopping_carts_items(db.Model):
       id = db.Column(db.Integer, primary_key=True)
-      shopping_cart_id = db.Column(db.Integer, db.ForeignKey('shopping_cart'))
-      product_id = db.Column(db.Integer, db.ForeignKey('product'))
+      shopping_cart_id = db.Column(db.Integer, db.ForeignKey('shopping_carts.id'))
+      product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
       quantity = db.Column(db.Integer)

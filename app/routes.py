@@ -6,7 +6,7 @@ from flask_babel import _, get_locale
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
     ResetPasswordRequestForm, ResetPasswordForm
-from app.models import User, Post
+from app.models import User, Post, Product, Categories, Brands
 from app.email import send_password_reset_email
 
 
@@ -193,3 +193,13 @@ def unfollow(username):
 @app.route('/home')
 def home():
     return render_template('homepage.html.j2', title='My Website')
+
+@app.route('/articles')
+def articles():
+    products = Product.query.all()
+    return render_template('articles.html.j2', products=products, categories=Categories, brands=Brands)
+
+@app.route('/rebulid')
+def rebulid():
+    db.create_all()
+    return "Done"
