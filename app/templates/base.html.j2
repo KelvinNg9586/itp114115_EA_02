@@ -34,6 +34,9 @@
                     <li>
                         <a href="{{ url_for('explore') }}">{{ _('Explore') }}</a>
                     </li>
+                    <li>
+                        <a href="{{ url_for('products') }}">{{ _('Product') }}</a>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_anonymous %}
