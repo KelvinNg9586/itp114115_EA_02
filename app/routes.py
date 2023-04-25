@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request, g
+from flask import Flask, render_template, flash, redirect, url_for, request, g
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from flask_babel import _, get_locale
@@ -197,9 +197,15 @@ def home():
 @app.route('/articles')
 def articles():
     products = Product.query.all()
-    return render_template('articles.html.j2', products=products, categories=Categories, brands=Brands)
+    return render_template('articles.html.j2', products=Product, categories=Categories, brands=Brands)
 
 @app.route('/rebulid')
 def rebulid():
     db.create_all()
     return "Done"
+
+@app.route('/product')
+def products():
+    products = Product.query.all()
+    return render_template('product_page.html.j2', title='MyProduct', products=products)
+
