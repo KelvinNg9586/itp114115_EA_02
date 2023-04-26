@@ -194,18 +194,18 @@ def unfollow(username):
 def home():
     return render_template('homepage.html.j2', title='My Website')
 
-@app.route('/product')
-def products():
+@app.route('/articles')
+def articles():
     products = Product.query.all()
-    return render_template('product_page.html.j2', title='MyProduct', products=products)
+    return render_template('articles.html.j2', products=Product, categories=Categories, brands=Brands)
 
 @app.route('/rebulid')
 def rebulid():
     db.create_all()
     return "Done"
 
-@app.route('/articles')
-def articles():
+@app.route('/product')
+def products():
     products = Product.query.all()
     return render_template('articles.html.j2', products=Product, categories=Categories, brands=Brands)
 
