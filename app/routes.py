@@ -207,7 +207,7 @@ def rebulid():
 @app.route('/product')
 def products():
     products = Product.query.all()
-    return render_template('articles.html.j2', products=Product, categories=Categories, brands=Brands)
+    return render_template('product_page.html.j2', products=products, categories=Categories, brands=Brands)
 
 @app.route('/product/list') 
 def p(p_id):
