@@ -208,3 +208,16 @@ def rebulid():
 def articles():
     products = Product.query.all()
     return render_template('articles.html.j2', products=Product, categories=Categories, brands=Brands)
+
+@app.route('/product/list') 
+def p(p_id):
+    p = Product.query.all() 
+    p_data = Product.query.get(p_id)
+    return render_template('product_page.html.j2', p=p_data, p_name=p_data.name, p_description=p_data.description, p_image_url=products.image_url, products=products)
+
+@app.route('/list/<int:list_id>')
+def product_list(list_id):
+    products = Product.query.filter_by(category_id=list_id).all()
+    # For example, you could pass the first product in the list to the template
+    product = products[0]
+    return render_template('product_list.html.j2', title='My content', products=products, product=product)
