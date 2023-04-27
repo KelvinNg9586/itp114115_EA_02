@@ -36,9 +36,9 @@
       <div class="col mb-4">
         <div class="card">
         {% if p.image_url %} 
-        <img src="{{ url_for('static', filename=p.image_url) }}" class="card-img-top" alt="{{ p.name }}">
+        <img src="{{ url_for('static', filename=p.image_url) }}" class="card-img-top" class="card-img-top" style="width: 100%;" alt="{{ p.name }}">
         {% else %}
-          <img src="{{ url_for('static', filename='img/no.jpeg') }}" class="card-img-top" alt="{{ p.name }}">
+        <img src="{{ url_for('static', filename='img/no.jpeg') }}" class="card-img-top" class="card-img-top" style="width: 100%;" alt="{{ p.name }}">
         {% endif %}
           <div class="card-body">
             <h5 class="card-title">{{ p.name }}</h5>
