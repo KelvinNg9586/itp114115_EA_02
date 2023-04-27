@@ -221,3 +221,7 @@ def product_list(list_id):
     # For example, you could pass the first product in the list to the template
     product = products[0]
     return render_template('product_list.html.j2', title='My content', products=products, product=product)
+
+@app.route('/shopping')
+def shopping():
+    return render_template('cart.html.j2', title='My cart')
