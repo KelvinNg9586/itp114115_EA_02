@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, render_template, flash, redirect, url_for, request, g
+from flask import Flask, render_template, flash, redirect, url_for, request, g, session, make_response
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from flask_babel import _, get_locale
@@ -69,7 +69,13 @@ def login():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('index')
+            resp = make_response(redirect(url_for('index')))
+            resp.set_cookie('user', str(user), max_age=606024*7)
+            session['user_id'] = user.id
+            
+            return resp
+        
+        next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html.j2', title=_('Sign In'), form=form)
 
